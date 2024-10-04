@@ -8,6 +8,7 @@ module.exports = {
     "./app.vue",
     "./error.vue",
   ],
+  darkMode: "class",
   theme: {
     screens: {
       sm: "640px", // Small devices (mobile)
