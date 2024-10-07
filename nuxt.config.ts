@@ -11,4 +11,11 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  modules: [
+    '@nuxtjs/color-mode',
+    '@nuxtjs/tailwindcss',
+  ],
+  colorMode: {
+    classSuffix: '',
+  },
 })
