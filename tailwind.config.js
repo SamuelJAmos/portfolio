@@ -8,7 +8,7 @@ module.exports = {
     "./app.vue",
     "./error.vue",
   ],
-  darkMode: "class",
+  darkMode: 'selector',
   theme: {
     screens: {
       sm: "640px", // Small devices (mobile)
@@ -21,8 +21,8 @@ module.exports = {
       primary: "#FF5722", // For main headings, CTAs, hover states
       secondary: "#0A2342", // For secondary headings, body text, backgrounds
       accent: "#00B4D8", // For buttons, icons, highlights, links
-      "bg-light": "#F5F5F5", // For light mode backgrounds, dark text
-      "bg-dark": "#2F4550", // For dark mode backgrounds, contrast elements
+      light: "#F5F5F5", // For light mode backgrounds, dark text
+      dark: "#2F4550", // For dark mode backgrounds, contrast elements
     },
     fontFamily: {
       heading: ["Montserrat", "sans-serif"],
