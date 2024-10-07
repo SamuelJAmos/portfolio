@@ -10,8 +10,16 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxt/icon": "^1.5.4",
+    "@nuxtjs/tailwindcss": "^6.12.1",
     "nuxt": "^3.13.0",
     "vue": "latest",
     "vue-router": "latest"
+  },
+  "devDependencies": {
+    "@nuxtjs/color-mode": "^3.5.1",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13"
   }
 }
