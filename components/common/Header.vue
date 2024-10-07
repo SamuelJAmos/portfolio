@@ -1,8 +1,7 @@
 <template>
   <div>
     <nav>
-      <!-- <ThemeToggle /> -->
-      <div>Hello World-Header</div>
+       <ThemeToggle />
     </nav>
   </div>
 </template>
