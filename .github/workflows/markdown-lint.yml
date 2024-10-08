@@ -20,3 +20,16 @@ jobs:
         with:
           fix: true
           globs: '**/*.md'
+
+      - name: Commit changes if any fixes were applied
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+          git add .
+          git commit -m "chore: auto-fix markdown lint issues" || echo "No changes to commit"
+
+      - name: Push changes
+        if: success()
+        run: git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
