@@ -3,10 +3,10 @@ name: Markdown Lint and Auto-Fix
 on:
   push:
     branches:
-      - main  # Only runs on pushes to main branch
+      - master  # Only runs on pushes to main branch
   pull_request:
     branches:
-      - main  # Runs on pull requests targeting main branch
+      - master  # Runs on pull requests targeting main branch
 
 jobs:
   lint:
