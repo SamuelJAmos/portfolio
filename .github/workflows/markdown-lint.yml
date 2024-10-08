@@ -2,7 +2,7 @@ name: Markdown Lint and Auto-Fix
 on:
   push:
     branches:
-      - main
+      - master
       - '**'  # Lint on all branches
   pull_request:
 jobs:
