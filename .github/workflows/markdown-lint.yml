@@ -3,9 +3,10 @@ name: Markdown Lint and Auto-Fix
 on:
   push:
     branches:
-      - main
-      - '**'  # Lint on all branches
+      - main  # Only runs on pushes to main branch
   pull_request:
+    branches:
+      - main  # Runs on pull requests targeting main branch
 
 jobs:
   lint:
@@ -30,6 +31,6 @@ jobs:
 
       - name: Push changes
         if: success()
-        run: git push
+        run: git push origin HEAD:main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
