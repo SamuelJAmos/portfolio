@@ -40,7 +40,7 @@ jobs:
           git commit -m "chore: auto-fix markdown lint issues" || echo "No changes to commit"
 
       - name: Push changes
-        if: steps.changes.outputs.changes_made == 'true'
+        if: success()
         run: git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
