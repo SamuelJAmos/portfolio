@@ -1,0 +1,33 @@
+name: Markdown Lint and Auto-Fix
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+            ref: ${{ github.head_ref }}
+      - name: Run markdownlint-cli2 with auto-fix
+        uses: DavidAnson/markdownlint-cli2-action@v17
+        with:
+          fix: true
+          globs: '**/*.md'
+
+      - name: Commit changes if any fixes were applied
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+          git add .
+          git commit -m "chore: auto-fix markdown lint issues" || echo "No changes to commit"
+      - name: Push changes
+        if: success()
+        run: git push origin HEAD:${{ github.head_ref }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
