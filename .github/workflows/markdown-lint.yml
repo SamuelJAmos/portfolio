@@ -1,14 +1,22 @@
 name: Markdown Lint and Auto-Fix
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+      - '**'  # Lint on all branches
+  pull_request:
 
 jobs:
   lint:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v4
-    - uses: DavidAnson/markdownlint-cli2-action@v17
-      with:
-        globs: |
-          *.md
-          !test/*.md
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run markdownlint-cli2 with auto-fix
+        uses: DavidAnson/markdownlint-cli2-action@v17
+        with:
+          fix: true
+          globs: '**/*.md'
