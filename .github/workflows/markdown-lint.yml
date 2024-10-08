@@ -23,7 +23,7 @@ jobs:
           globs: '**/*.md'
 
       - name: Pull latest changes from master
-        run: git pull origin master
+        run: git pull origin master --ff-only  # Specify how to reconcile divergent branches
 
       - name: Commit changes if any fixes were applied
         run: |
