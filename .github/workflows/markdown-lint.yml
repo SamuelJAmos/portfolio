@@ -22,9 +22,6 @@ jobs:
           fix: true
           globs: '**/*.md'
 
-      - name: Pull latest changes from master
-        run: git pull origin master --ff-only  # Specify how to reconcile divergent branches
-
       - name: Commit changes if any fixes were applied
         run: |
           git config --global user.name 'github-actions'
