@@ -7,7 +7,7 @@ on:
     pull_request:
       branches:
         - master  # Runs on pull requests targeting main branch
-
+        
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -22,15 +22,27 @@ jobs:
           fix: true
           globs: '**/*.md'
 
+      - name: Check if there are any changes
+        id: changes
+        run: |
+          git add .
+          if git diff-index --quiet HEAD --; then
+            echo "No changes to commit"
+            echo "::set-output name=changes_made::false"
+          else
+            echo "Changes have been made"
+            echo "::set-output name=changes_made::true"
+          fi
+
       - name: Commit changes if any fixes were applied
+        if: steps.changes.outputs.changes_made == 'true'
         run: |
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
-          git add .
-          git commit -m "chore: auto-fix markdown lint issues" || echo "No changes to commit"
+          git commit -m "chore: auto-fix markdown lint issues"
 
       - name: Push changes
-        if: success()
+        if: steps.changes.outputs.changes_made == 'true'
         run: git push origin HEAD:refs/heads/master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
