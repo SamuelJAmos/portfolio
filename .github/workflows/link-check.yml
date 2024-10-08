@@ -1,8 +1,12 @@
 name: Links (Fail Fast)
 
 on:
-  push:
-  pull_request:
+    push:
+      branches:
+        - main  # Only runs on pushes to main branch
+    pull_request:
+      branches:
+        - main  # Runs on pull requests targeting main branch
 
 jobs:
   linkChecker:
