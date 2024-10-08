@@ -3,10 +3,9 @@ name: Markdown Lint and Auto-Fix
 on:
   push:
     branches:
-      - master  # Only runs on pushes to main branch
+      - main
+      - '**'  # Lint on all branches
   pull_request:
-    branches:
-      - master  # Runs on pull requests targeting main branch
 
 jobs:
   lint:
@@ -21,6 +20,9 @@ jobs:
         with:
           fix: true
           globs: '**/*.md'
+
+      - name: Pull latest changes from master
+        run: git pull origin master
 
       - name: Commit changes if any fixes were applied
         run: |
